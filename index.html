@@ -66,7 +66,7 @@ background-color: #218838;
 </div>
 
 <script>
-const correctPin = "xxx"; // 正しい暗証番号を設定
+const correctPin = "250"; // 正しい暗証番号を設定
 let confirmed = false; // 確認用暗証番号の確認フラグ
 
 function checkPin() {
@@ -74,7 +74,7 @@ const pin = document.getElementById("pin").value;
 
 if (pin === correctPin) {
 confirmed = true; // 暗証番号が確認されたらフラグを立てる
-alert("暗証番号が正しいです！確認してください。");
+alert("暗証番号があっています。人間かどうかを検証するため確認してください。");
 } else {
 alert("暗証番号が間違っています。");
 }
@@ -88,7 +88,7 @@ return;
 
 const confirmPin = document.getElementById("confirmPin").value;
 if (confirmPin === correctPin) {
-window.location.href = "https://google.com"; // 移動したいページのURL
+window.location.href = "https://b.007.workers.dev"; // 移動したいページのURL
 } else {
 alert("確認用暗証番号が間違っています。");
 }
