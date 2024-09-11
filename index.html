@@ -10,22 +10,28 @@ display: flex;
 justify-content: center;
 align-items: center;
 height: 100vh;
-background-color: #f0f0f0;
-font-family: Arial, sans-serif;
+background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+font-family: 'Arial', sans-serif;
 }
 .container {
 background: white;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+padding: 40px;
+border-radius: 15px;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 text-align: center;
+width: 300px;
+}
+h2 {
+color: #333;
+margin-bottom: 20px;
 }
 input[type="password"] {
 padding: 10px;
 border: 2px solid #007bff;
 border-radius: 5px;
-width: 80%;
+width: calc(100% - 22px);
 margin-bottom: 15px;
+font-size: 16px;
 }
 button {
 padding: 10px 20px;
@@ -34,30 +40,57 @@ color: white;
 border: none;
 border-radius: 5px;
 cursor: pointer;
+font-size: 16px;
+margin-top: 10px;
+transition: background-color 0.3s;
 }
 button:hover {
 background-color: #0056b3;
+}
+.check-button {
+background-color: #28a745;
+}
+.check-button:hover {
+background-color: #218838;
 }
 </style>
 </head>
 <body>
 
 <div class="container">
-<h2>暗証番号を入力してください</h2>
+<h2>暗証番号を入力</h2>
 <input type="password" id="pin" placeholder="暗証番号">
-<br>
+<input type="password" id="confirmPin" placeholder="確認用暗証番号">
 <button onclick="checkPin()">送信</button>
+<button class="check-button" onclick="checkConfirmation()">確認</button>
 </div>
 
 <script>
+const correctPin = "xxx"; // 正しい暗証番号を設定
+let confirmed = false; // 確認用暗証番号の確認フラグ
+
 function checkPin() {
 const pin = document.getElementById("pin").value;
-const correctPin = "xxx"; // 正しい暗証番号を設定
 
 if (pin === correctPin) {
-window.location.href = "https://google.com"; // 移動したいページのURL
+confirmed = true; // 暗証番号が確認されたらフラグを立てる
+alert("暗証番号が正しいです！確認してください。");
 } else {
 alert("暗証番号が間違っています。");
+}
+}
+
+function checkConfirmation() {
+if (!confirmed) {
+alert("まず、暗証番号を確認してください。");
+return;
+}
+
+const confirmPin = document.getElementById("confirmPin").value;
+if (confirmPin === correctPin) {
+window.location.href = "https://google.com"; // 移動したいページのURL
+} else {
+alert("確認用暗証番号が間違っています。");
 }
 }
 </script>
